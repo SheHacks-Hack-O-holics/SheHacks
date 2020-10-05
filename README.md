@@ -41,4 +41,6 @@ Add-Ons In The Near Future :
 **Thumbnails of the project :**
 This is an introductory page to the website beneficial for the farmers, who are underprivileged due to the greed of the middle-men. Rooted – is a website created in interest of those underprivileged farmers. It provides them a platform to sell their goods at a reasonable rate. Also it helps the customers to gain resources at a good rate.
 Selection of the Guest option will redirect you to the Rooted homepage. 
+![alt tag](http://url/to/1.png)
+
 
