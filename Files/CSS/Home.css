@@ -1,0 +1,276 @@
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f6eee0;
+  border-radius: 50%;
+  border-top: 16px solid #4CAF50;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+}
+
+body{
+  margin:1%;
+}
+
+header{ 
+    height: 200px;
+    background-image: linear-gradient( #f6eee0, #f2f2f2);
+}
+
+figure{
+  float:left;
+}
+
+figure img {
+  margin-left: 20px;
+  
+}
+
+figcaption{
+  color:black;
+  font-weight: bold;
+  font-size: 31px;
+  position: relative;
+}
+
+.input-group mb-3{
+  float: center;
+}
+
+.cartbtn{
+  float: right;
+  background-color: #4CAF50;
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  border: none;
+  text-align: center;
+}
+
+.cartbtn a{
+  font-size: 20px;
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+.cartbtn a:hover{
+  color: black;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  border: none;
+  text-align: center;
+  margin-top: 0px;
+  margin-right: 8px;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  float: right;
+  position: relative;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+  
+.topnav {
+  overflow: hidden;
+  background-color:#4CAF50;
+  width:100%;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 80px;
+  text-decoration: none;
+  font-size: 25px;
+  background-color: #4caf50 ;
+}
+
+.topnav a:hover {
+  background-color: #f6eee0;
+  color: black;
+  text-decoration: none;
+}
+
+.topnav a.active {
+  background-color: #000000;
+  color: white;
+}
+
+.mySlides
+{
+  height:500px;
+  width:100%;
+}
+
+h2{
+  font-size: 40px;
+  color: #4CAF50;
+  text-align: center;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  position: relative;
+  float: left;
+  padding: 24px;
+  background-color: #f6eee0;
+  background-repeat: repeat;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color:#4CAF50;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+main{
+  background-color: #f6eee0;
+}
+
+footer{
+  padding-top:25%;
+  padding-bottom:0px;
+  
+}
+
+ul{
+  display:inline-block;
+  background-color: #000000;
+  padding-top:0px;
+  padding:59px;
+  padding-bottom:0px;
+
+}
+
+li{
+  color: white;
+  list-style-type:none;
+  padding:3px;
+
+}
+
+a{
+  text-decoration:none;
+  font-size: 25px;
+  color:white;
+}
+
+a:hover{
+  background-color:#4CAF50;
+  text-decoration:underline;
+}
+
+.sml{
+  display:inline;
+  padding-right:45px;
+}
+
+.info{
+  width:100%;
+  background-color: #000000;
+  padding-bottom:0px;
+}
+
+.ul{
+  padding-right:90px;
+
+}
+
+h3{
+  font-size:25px;
+  color:white;
+}

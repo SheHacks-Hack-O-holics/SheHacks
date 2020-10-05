@@ -1,0 +1,24 @@
+h1{
+    background-color:#4caf50;
+    padding:40px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color:#ffffff;
+    
+}
+
+body{
+    background-color: #f6eee0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+
+h4{
+    margin:15px;
+    font-size: larger;
+}
+
+p{
+    margin:25px;
+    font-size: larger;
+}

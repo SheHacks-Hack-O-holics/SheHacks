@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooted - Feedback Form</title>
+    <link rel="stylesheet" href="Feedback.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="icon" href="logo.png" type="image/gif" sizes="16x16">
+</head>
+<body>
+<div class="containerregister">
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h1 class="register-heading">Feedback Form</h1>
+                            <div class="row register-form">
+                                <div class="col-md-12">
+                                    <form method="post" autocomplete="off" name="google-sheet">
+                                        <div class="form">
+                                            <input type="text" name="Username" class="form-control" placeholder="Your Username *" value="" required=""/>
+                                        </div>
+                                        <div class="form">
+                                            <input type="number" name="Contact Number" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
+                                        </div>
+                                        <div class="form">
+                                            <input type="text" name="Write to us..." class="form-control" placeholder="Write to us... *" value="" required=""/>
+                                        </div>
+                                        <div class="form-button">
+                                            <input type="submit" name="submit" class="btnSubmit btn-block" value="submit" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+          
+          <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyz1mJuK_t2tI1FrvFKcDDOdQ6SSIC5DT-cGZK0Uqrn9iv5B-s/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

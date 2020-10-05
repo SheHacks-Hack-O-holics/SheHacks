@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset ="UTF-8">
+    <title>Rooted-Home</title>
+    <link rel="stylesheet" href="Home.css">
+    <link rel="icon" href="logo.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body onload="myFunction()" style="margin:0;">
+    <div id="loader"></div>
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+    <header>
+        <figure>
+            <img src="logo.png" alt="Logo" style="width:10%">
+            <figcaption>Rooted</figcaption>
+        </figure>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <button class="cartbtn"><a href="Cart.html">My Cart</a></button>
+                <div class="dropdown">
+                    <button class="dropbtn">Login</button>
+                        <div class="dropdown-content">
+                            <a href="Seller.html">Seller Login</a>
+                            <a href="Buyer.html">Buyer Login</a>
+                        </div>
+                </div>
+                <section class="topnav">
+                    <a class="active" href="Home.html">Home</a>
+                    <a href="Vegetables.html">Vegetables</a>
+                    <a href="Fruits.html">Fruits</a>
+                    <a href="pnc.html">Pulses and Cereals</a>
+                    <a href="More.html">More</a>
+                </section> 
+                <div style="padding-left:16px"></div>
+    </header>
+    <main>
+        <div class="w3-content w3-display-container">
+            <img class="mySlides" src="vege_bg.jpeg">
+            <img class="mySlides" src="fruit_bg.jpeg">
+            <img class="mySlides" src="pnc_bg.jpeg">
+            <img class="mySlides" src="snf_bg.jpeg">
+        </div>
+        <h2>Fresh Fruits For You</h2>
+        <hr>
+        <div class="card">
+            <img src="Apple.png" alt="Fruits" style="width:100%">
+            <h1>Apple</h1>
+            <p class="price">Rs.110 per kg</p>
+            <p>Product ID = F00A1</p>
+            <p><a href="Cart.html"><button>Add to Cart</button></a></p>
+        </div>
+        <div class="card">
+            <img src="Banana.png" alt="Fruits" style="width:100%">
+            <h1>Banana</h1>
+            <p class="price">Rs.88 per kg</p>
+            <p>Product ID = F00B1</p>
+            <p><a href="Cart.html"><button>Add to Cart</button></a></p>
+        </div>
+        <div class="card">
+            <img src="Orange.png" alt="Fruits" style="width:100%">
+            <h1>Orange</h1>
+            <p class="price">Rs.45 per kg</p>
+            <p>Product ID = F00O1</p>
+            <p><a href="Cart.html"><button>Add to Cart</button></a></p>
+        </div>
+        <h2>Fresh Vegetables For You</h2>
+        <hr>
+        <div class="card">
+            <img src="Onion.png" alt="Veggies" style="width:100%">
+            <h1>Onion</h1>
+            <p class="price">Rs.18 per kg</p>
+            <p>Product ID = V00O4</p>
+            <p><a href="Cart.html"><button>Add to Cart</button></a></p>
+        </div>
+        <div class="card">
+            <img src="Potato.png" alt="Veggies" style="width:100%">
+            <h1>Potato</h1>
+            <p class="price">Rs.18 per kg</p>
+            <p>Product ID = V00P1</p>
+            <p><a href="Cart.html"><button>Add to Cart</button></a></p>
+        </div>
+        <div class="card">
+            <img src="Tomato.png" alt="Veggies" style="width:100%">
+            <h1>Tomato</h1>
+            <p class="price">Rs.40 per kg</p>
+            <p>Product ID = V00T1</p>
+            <p><a href="Cart.html"><button>Add to Cart</button></a></p>
+        </div>
+        <script>
+            var slideIndex = 0;
+            carousel();
+
+            function carousel() 
+            {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) 
+                {
+                    x[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > x.length) 
+                {
+                    slideIndex = 1
+                }
+                x[slideIndex-1].style.display = "block";
+                setTimeout(carousel, 2000); // Change image every 2 seconds
+            }
+        </script>
+        <script>
+            var myVar;
+
+            function myFunction() 
+            {
+                myVar = setTimeout(showPage, 3000);
+            }
+
+            function showPage() 
+            {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("myDiv").style.display = "block";
+            }
+        </script>
+    </main>
+    <footer>
+            <div class="info">
+               <ul class="ul">
+                    <li><a href="AboutUs.html" target="_blank">About us</a></li>
+                    <li><a href="Cart.html">Cart</a></li>
+                    <li><a href="Tnc.html" target="_blank">Terms and Conditions</a></li>
+                    <li><a href="PP.html" target="_blank">Privacy Policy</a></li>
+                </ul>
+                <ul class="ul">
+                    <li><a href="FAQ.html" target="_blank">FAQs</a></li>
+                    <li><a href="Feedback.html" target="_blank">Feedback</a></li>
+                    <li>Contact us</li>
+                    <li>+91 7506853057</li>
+                    <li>ceorooted@gmail.com</li>
+                </ul>
+                <ul class="ul">
+                    <h3>Social Media Links</h3>
+                    <li class="sml"><a href="https://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true" aria-label="instagram"></i></a></li>
+                    <li class="sml"><a href="https://www.facebook.com"><i class="fa fa-facebook-official" aria-hidden="true" aria-label="facebook"></i></a></li>
+                    <li class="sml"><a href="https://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true" aria-label="twitter"></i></a></li>
+               </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+

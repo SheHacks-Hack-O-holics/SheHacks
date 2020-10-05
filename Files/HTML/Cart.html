@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rooted-My Cart</title>
+    <link rel="stylesheet" href="Cart.css">
+    <link rel="icon" href="logo.png" type="image/gif" sizes="16x16">
+    <script>
+        var products = [];
+    var cart = [];
+
+        function addProduct() {
+            var productID = document.getElementById("productID").value;
+            var product_desc = document.getElementById("product_desc").value;
+            var qty = document.getElementById("quantity").value;
+            var price = document.getElementById("price").value;
+
+            var newProduct = {
+                product_id: null,
+                product_desc: null,
+                product_qty: 0,
+                product_price: 0.00,
+            };
+            newProduct.product_id = productID;
+            newProduct.product_desc = product_desc;
+            newProduct.product_qty = qty;
+            newProduct.product_price = price;
+
+
+            products.push(newProduct);
+
+
+            var html = "<table id='tblcart1' border='1'>";
+            html += "<td>Product ID</td>";
+            html += "<td>Product Description</td>";
+            html += "<td>Quantity</td>";
+            html += "<td>Price</td>";
+            html += "<td>Action</td>";
+            for (var i = 0; i < products.length; i++) {
+                html += "<tr>";
+                html += "<td>" + products[i].product_id + "</td>";
+                html += "<td>" + products[i].product_desc + "</td>";
+                html += "<td>" + products[i].product_qty + "</td>";
+                html += "<td>" + products[i].product_price + "</td>";
+                html += "<td><button type='submit' onClick='deleteProduct(\"" + products[i].product_id + "\", this);'/>Delete Item</button> &nbsp <button type='submit' id='Pop' onClick='addCart(\"" + products[i].product_id + "\", this);'/>Buy</button></td>";
+                html += "</tr>";
+            }
+            html += "</table>";
+            document.getElementById("demo").innerHTML = html;
+
+            document.getElementById("resetbtn").click()
+        }
+        function deleteProduct(product_id, e) {
+            e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].product_id == product_id) {
+                    // DO NOT CHANGE THE 1 HERE
+                    products.splice(i, 1);
+                }
+            }
+        }
+
+        function addCart(product_id) {
+
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].product_id == product_id) {
+                    var cartItem = null;
+                    for (var k = 0; k < cart.length; k++) {
+                        if (cart[k].product.product_id == products[i].product_id) {
+                            cartItem = cart[k];
+                            cart[k].product_qty++;
+                            break;
+                        }
+                    }
+                    if (cartItem == null) {
+                        
+                        var cartItem = {
+                            product: products[i],
+                            product_qty: products[i].product_qty 
+                        };
+                        cart.push(cartItem);
+                    }
+                }
+            }
+
+            renderCartTable();
+
+        }
+
+        function renderCartTable() {
+        var html = '';
+        var ele = document.getElementById("demo2");
+        ele.innerHTML = ''; 
+
+        html += "<table id='tblCart2' border='1|1'>";
+        html += "<tr><td>Product ID</td>";
+        html += "<td>Product Description</td>";
+        html += "<td>Quantity</td>";
+        html += "<td>Price</td>";
+        html += "<td>Total</td>";
+        html += "<td>Action</td></tr>";
+        var GrandTotal = 0;
+        for (var i = 0; i < cart.length; i++) {
+            html += "<tr>";
+            html += "<td>" + cart[i].product.product_id + "</td>";
+            html += "<td>" + cart[i].product.product_desc + "</td>";
+            html += "<td>" + cart[i].product_qty + "</td>";
+            html += "<td>" + cart[i].product.product_price + "</td>";
+            html += "<td>" + parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_qty) + "</td>";
+            html += "<td><button type='submit' onClick='subtractQuantity(\"" + cart[i].product.product_id + "\", this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + cart[i].product.product_id + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' onClick='removeItem(\"" + cart[i].product.product_id + "\", this);'/>Remove Item</button></td>";
+            html += "</tr>";
+
+           GrandTotal += parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_qty);            
+
+        }
+        document.getElementById('demo3').innerHTML = GrandTotal;
+        html += "</table>";
+        ele.innerHTML = html;
+    }
+
+
+        function subtractQuantity(product_id)
+        {
+            
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].product.product_id == product_id) {
+                    cart[i].product_qty--;
+                }
+
+                if (cart[i].product_qty == 0) {
+                    cart.splice(i,1);
+                }
+        
+            }
+            renderCartTable();
+        }
+        function addQuantity(product_id)
+        {
+            
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].product.product_id == product_id) {
+                    cart[i].product_qty++;
+                }  
+            }
+            renderCartTable();
+        }
+        function removeItem(product_id)
+        {
+            
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].product.product_id == product_id) {
+                    cart.splice(i,1);
+                }
+
+            }
+            renderCartTable();
+        }
+        </script>
+        <script>
+    var sheetName = 'Sheet1'
+		var scriptProp = PropertiesService.getScriptProperties()
+
+		function intialSetup () {
+		  var activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+		  scriptProp.setProperty('key', activeSpreadsheet.getId())
+		}
+
+		function doPost (e) {
+		  var lock = LockService.getScriptLock()
+		  lock.tryLock(10000)
+
+		  try {
+			var doc = SpreadsheetApp.openById(scriptProp.getProperty('key'))
+			var sheet = doc.getSheetByName(sheetName)
+
+			var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
+			var nextRow = sheet.getLastRow() + 1
+
+			var newRow = headers.map(function(header) {
+			  return header === 'timestamp' ? new Date() : e.parameter[header]
+			})
+
+			sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow])
+
+			return ContentService
+			  .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+			  .setMimeType(ContentService.MimeType.JSON)
+		  }
+
+		  catch (e) {
+			return ContentService
+			  .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
+			  .setMimeType(ContentService.MimeType.JSON)
+		  }
+
+		  finally {
+			lock.releaseLock()
+		  }
+		}
+        </script>
+</head>
+<body>
+<header>
+        <figure>
+            <img src="logo.png" alt="Logo" style="width:10%">
+            <figcaption>Rooted</figcaption>
+        </figure>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <button class="cartbtn"><a href="Cart.html">My Cart</a></button>
+                <div class="dropdown">
+                    <button class="dropbtn">Login</button>
+                        <div class="dropdown-content">
+                            <a href="Seller.html">Seller Login</a>
+                            <a href="Buyer.html">Buyer Login</a>
+                        </div>
+                </div>
+                <section class="topnav">
+                    <a href="Home.html">Home</a>
+                    <a href="Vegetables.html">Vegetables</a>
+                    <a href="Fruits.html">Fruits</a>
+                    <a href="pnc.html">Pulses and Cereals</a>
+                    <a href="More.html">More</a>
+                </section> 
+    </header>
+    <main>
+<form name="order" id="order">
+    <table class="first">
+        <tr>
+            <td>
+                <label for="productID">Product ID:</label>
+            </td>
+            <td>
+                <input id="productID" name="product" type="text" size="28" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="product">Product Desc:</label>
+            </td>
+            <td>
+                <input id="product_desc" name="product" type="text" size="28" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="quantity">Quantity:</label>
+            </td>
+            <td>
+                <input id="quantity" name="quantity" width="196px" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="price">Price:</label>
+            </td>
+            <td>
+                <input id="price" name="price" size="28" required/>
+            </td>
+        </tr>
+    </table>
+    <input type="reset" class="reset" name="reset" id="resetbtn" class="resetbtn" value="Reset" />
+    <input type="button" class="but" name="enter" id="btnAddProduct" onclick="addProduct();" value="Add to cart" >
+    <script>
+    alert("Make sure you login before proceeding further");
+    </script>
+</form>
+<hr>
+<h2> My Cart</h2>
+<hr>
+<p id="demo"></p> 
+<h2> My Order </h2>
+<hr>
+<p id="demo2"></p>
+<h2>Grand Total:</h2>
+<hr>
+<p id="demo3"></p>
+</main>
+</body>
+</html>
