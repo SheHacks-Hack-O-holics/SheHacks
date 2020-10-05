@@ -73,7 +73,9 @@ Feedback form has also been created for friendly interaction between the creator
 ![alt text](https://github.com/SheHacks-Hack-O-holics/SheHacks/blob/main/Readme-Images/7.png?raw=true)
 
 **Project Video :**
-https://drive.google.com/file/d/1UUXakq7JYlMsUckbw3cnuKgcTaCLBY8d/view?usp=drivesdk
+https://drive.google.com/file/d/1UUXakq7JYlMsUckbw3cnuKgcTaCLBY8d/view?usp=sharing
+
+
 
 Thank You :)
 
